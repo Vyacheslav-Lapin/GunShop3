@@ -1,8 +1,10 @@
 package model;
 
-import lombok.Value;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
-@Value
+@Data // TODO: 04/03/2017 make Value and check DAO layer
+@Accessors(chain = true)
 public class GunModel {
     //    id            INT AUTO_INCREMENT PRIMARY KEY,
     private int id;

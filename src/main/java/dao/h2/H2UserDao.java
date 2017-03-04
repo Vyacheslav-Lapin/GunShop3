@@ -6,7 +6,6 @@ import model.Address;
 import model.License;
 import model.User;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,13 +17,17 @@ import java.util.List;
 public class H2UserDao implements UserDao {
 
     public static final String SELECT_ALL_SQL =
-            "SELECT id, first_name, last_name, pathronimic, nickname, dob, address_id, a.city, a.flat, a.house, " +
+            "SELECT u.id, first_name, last_name, pathronimic, nickname, dob, address_id, a.city, a.flat, a.house, " +
                     "a.street, license_id, telephone, email, password " +
                     "FROM User u, Address a " +
                     "WHERE u.address_id = a.id";
 
-    @Resource(name = "jdbc/TestDB")
     private DataSource dataSource;
+
+    public H2UserDao(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
 
     @Override
     @SneakyThrows

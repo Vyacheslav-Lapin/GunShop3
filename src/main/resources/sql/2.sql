@@ -14,7 +14,7 @@ INSERT INTO User (first_name, last_name, nickname, dob, address_id, license_id, 
 VALUES ('Вася',
         'Пупкин',
         'VasyaPupkin',
-        1989 - 03 - 04,
+        '1989-03-04',
         1,
         2,
         '222-33-22',
@@ -27,17 +27,17 @@ VALUES ('Парабеллум', 4, 9, 102, TRUE, 8);
 INSERT INTO Gun (id, model_id, dob, delivery_date) VALUES (
   '987345083249872456',
   1,
-  1889 - 03 - 04,
-  2017 - 03 - 04);
+  '1889-03-04',
+  '2017-03-04');
 
 INSERT INTO Gun (id, model_id, dob, delivery_date) VALUES (
   '732645879263452564',
   1,
-  1889 - 03 - 04,
-  2017 - 03 - 04);
+  '1889-03-04',
+  '2017-03-04');
 
 INSERT INTO Gun (id, model_id, dob, delivery_date) VALUES (
   '387653415876345983',
   1,
-  1889 - 03 - 04,
-  2017 - 03 - 04);
+  '1889-03-04',
+  '2017-03-04');

@@ -1,5 +1,8 @@
 package controllers;
 
+import dao.GunDao;
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +16,15 @@ import static model.User.FIRST_NAME_KEY;
 @WebServlet("/")
 public class WelcomeController extends HttpServlet {
 
-    public static String WELCOME_KEY = "Welcome";
+    public static final String WELCOME_KEY = "Welcome";
+    public static final String ALL_GUNS_KEY = "AllGuns";
+
+    private GunDao gunDao;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        gunDao = (GunDao) config.getServletContext().getAttribute("GunDao");
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -24,8 +35,7 @@ public class WelcomeController extends HttpServlet {
                 .orElse("Hello!");
 
         req.setAttribute(WELCOME_KEY, s);
-
-
+        req.setAttribute(ALL_GUNS_KEY, gunDao.getAll());
 
         req.getRequestDispatcher("/WEB-INF/index.jsp")
                 .forward(req, resp);

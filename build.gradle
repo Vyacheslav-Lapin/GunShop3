@@ -24,7 +24,8 @@ test.testLogging.showStandardStreams = true
 dependencies {
     compile 'com.github.Vyacheslav-Lapin:Hegel:master-SNAPSHOT',
             'ch.qos.logback:logback-classic:+',
-            'io.javaslang:javaslang:+'
+            'io.javaslang:javaslang:+',
+            'com.h2database:h2:+'
 
     // Tomcat internal libraries
     providedCompile 'org.apache.tomcat:tomcat-api:+',

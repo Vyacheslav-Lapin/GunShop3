@@ -1,6 +1,7 @@
 package listeners;
 
 import lombok.SneakyThrows;
+import lombok.extern.java.Log;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContextEvent;
@@ -17,6 +18,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @WebListener
+@Log
 public class dbIniter implements ServletContextListener {
 
     @Resource(name = "jdbc/TestDB")
@@ -26,7 +28,9 @@ public class dbIniter implements ServletContextListener {
     @SneakyThrows
     public void contextInitialized(ServletContextEvent sce) {
         Pattern pattern = Pattern.compile("^\\d+\\.sql$");
-        Path sqlDirPath = Paths.get(sce.getServletContext().getContextPath(), "/sql");
+        Path sqlDirPath = Paths.get(
+                sce.getServletContext().getRealPath("/WEB-INF/classes/sql"));
+
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement();
              DirectoryStream<Path> paths = Files.newDirectoryStream(sqlDirPath)) {
